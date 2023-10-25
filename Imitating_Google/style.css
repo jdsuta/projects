@@ -1,0 +1,63 @@
+       /* Center button and search bar */
+       div.r {
+           text-align: right;
+       }
+
+
+       /* Center button and search bar */
+       div.c {
+           text-align: center;
+           padding: 100px;
+       }
+
+       /* Align text lef side*/
+       div th {
+           text-align: left;
+       }
+
+       /* Align text lef side*/
+       div table {
+           padding: 30px;
+       }
+
+       /* Align button center*/
+       .button-container {
+           text-align: right;
+       }
+
+       .button {
+           background-color: #4689F7;
+           border: none;
+           color: white;
+           padding: 10px;
+           text-align: center;
+           text-decoration: none;
+           display: inline-block;
+           font-size: 14px;
+           margin: 4px 2px;
+           cursor: pointer;
+           border-radius: 3px;
+       }
+
+       button:hover {
+           background-color: #6aa0f8;
+       }
+
+       .text-box {
+           border-radius: 20px;
+           /* border: 2px solid black; */
+           width: 400px;
+           height: 30px;
+           font-size: 15px;
+           text-align: start;
+           /* Second number let's move the input to the right */
+           padding: 0px 20px;
+       }
+
+       input:hover {
+           background-color: rgb(249, 248, 245);
+       }
+
+       a:hover {
+        color: #146cf8;
+       }
