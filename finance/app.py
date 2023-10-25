@@ -1,5 +1,5 @@
 # Currently: Finished putting personal touch (Password reset)
-# export API_KEY=pk_5c40fc9cf3944037a270c2fd24c09add
+# export API_KEY="Api Key provided by https://iexcloud.io/"
 # This program is not considering race conditions
 # Flask run to run the code
 
