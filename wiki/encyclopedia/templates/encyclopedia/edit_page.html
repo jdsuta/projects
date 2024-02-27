@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit Page
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+    <form action="{% url 'editpage' title=title %}" method="post">
+        {% csrf_token %}
+        <p><label for="new_content">Please input the title</label></p>
+        <strong>TITLE:</strong>
+        <br>
+        <textarea placeholder="Title" id="new_title" name="title" rows="2" cols="10" required> {{ title }}</textarea>
+        <br>
+        <br>
+        <p><label for="new_content">Hi There! Please **Edit** the <strong>content</strong> by using <a href=https://www.markdownguide.org/cheat-sheet>markdown syntax</a> to edit it</label></p>
+        <strong>CONTENT:</strong>       
+        <br>
+        <textarea placeholder="Write your content here" id="new_content" name="content" rows="6" cols="40" required> {{ content }} </textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

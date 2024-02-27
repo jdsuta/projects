@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    /* I commented this part because I believe is more user friendly to modify it accordingly. */
+    /* height: 90vh; */ 
+    width: 80%;
+}
+
+.main {
+    padding: 10px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.center img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: auto;
+}
+
+.center h1 {
+    color: #333; /* Adjust the color as needed */
+}
+
+
+/* Specific styling for the new_title textarea */
+#new_title {
+    width: 20%;
+}
+
+/* Specific styling for the new_content textarea */
+#new_content {
+    width: 80%;
+}

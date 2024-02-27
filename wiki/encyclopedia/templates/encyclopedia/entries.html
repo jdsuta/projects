@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+    <a href="{% url 'editpage' title=name %}">Edit Page</a>
+
+    {% autoescape off %} 
+    {{ entry }} 
+    {% endautoescape %}
+
+{% endblock %}

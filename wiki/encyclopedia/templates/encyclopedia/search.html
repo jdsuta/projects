@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results</h1>
+        {% if empty %}
+            <p>There are no results for this search at this time </p>
+        {% else %}
+        {% endif %}
+
+
+    <ul>
+        {% for entry in entries %}
+        <!-- It generates the URL for the encyclopedia_entry view, which corresponds to the URL pattern with the <str:name> parameter. It creates links like "http://127.0.0.1:8000/wiki/CSS" -->
+            <li><a href="{% url 'encyclopedia_entry' name=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
