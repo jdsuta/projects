@@ -4,9 +4,12 @@ In this project, the idea was to replicate the front-end design for Google Searc
 
 Discover the results for this task in this video
 
-<p>
+[![Watch the video](https://img.youtube.com/vi/yE5DRvgfORw/maxresdefault.jpg)](https://www.youtube.com/embed/yE5DRvgfORw)
+
+
+<!-- <p>
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/yE5DRvgfORw" frameborder="0" allowfullscreen></iframe>
-</p>
+</p> -->
 
 
 The key part of this project was to udnerstand forms and how the queries are formed. 
@@ -17,16 +20,16 @@ The key part of this project was to udnerstand forms and how the queries are for
 
 For example, here is a little example on how the google index works: 
 
-{% highlight ruby %}
-        <form action="https://google.com/search">
-            <input class="text-box" type="text" name="q" autofocus>
-            <br>
-            <br>
-            <button class="button" type="submit" value="Google Search">Google Search</button>
-            <!-- btnI used with button I'm feeling lucky it will modify the query-->
-            <button class="button" type="submit" name="btnI" value="I’m Feeling Lucky">I’m Feeling Lucky</button>
-        </form>
-{% endhighlight %}
+```
+<form action="https://google.com/search">
+    <input class="text-box" type="text" name="q" autofocus>
+    <br>
+    <br>
+    <button class="button" type="submit" value="Google Search">Google Search</button>
+    <!-- btnI used with button I'm feeling lucky it will modify the query-->
+    <button class="button" type="submit" name="btnI" value="I’m Feeling Lucky">I’m Feeling Lucky</button>
+</form>
+```
 
 
 In the code above, there are two buttons "Google Search" and "I’m Feeling Lucky". For example, when looking for the word "hello": 
@@ -38,7 +41,7 @@ Notice the **name** of button "I’m Feeling Lucky" is attached to the qeury `..
 
 ## Google Image Search:
 
-{% highlight ruby %}
+```
         <form action="https://google.com/search">
             <input class="text-box" type="text" name="q">
             <input type="hidden" name="tbm" value="isch" />
@@ -46,7 +49,7 @@ Notice the **name** of button "I’m Feeling Lucky" is attached to the qeury `..
             <br>
             <button class="button" type="submit" value="Google Image Search">Google Image Search</button>
         </form>
-{% endhighlight %}
+```
 
 For the image it was necessary to add the following parameters `name="tbm" value="isch"` so when looking for an image for example cat. The URL gets formed as follows: `https://www.google.com/search?q=cat&tbm=isch` 
 
@@ -63,7 +66,7 @@ For google advance search the same principle was added. However, the idea is to 
 
 Here the key piece of code: 
 
-{% highlight ruby %}
+```
 <form action="https://google.com/search">
             <table>
                 <tr>
@@ -116,7 +119,7 @@ Here the key piece of code:
                 </tr>
             </table>
         </form>
-{% endhighlight %}
+```
 
 
 # CSS 
