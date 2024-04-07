@@ -4,9 +4,7 @@ Wikipedia is a project built using the **Django** framework. It serves as a free
 
 Discover the capabilities of Wikipedia through this video presentation:
 
-<p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/4muNAK4nkGQ" frameborder="0" allowfullscreen></iframe>
-</p>
+[![Watch the video](https://img.youtube.com/vi/4muNAK4nkGQ/maxresdefault.jpg)](https://www.youtube.com/embed/4muNAK4nkGQ)
 
 ### Personal Insights
 
@@ -46,8 +44,3 @@ Clicking “Random Page” in the sidebar should take the user to a random encyc
 
 #### Markdown to HTML Conversion
 On each entry’s page, any Markdown content in the entry file should be converted to HTML before being displayed to the user. You may use the `python-markdown2` package to perform this conversion, installable via `pip3 install markdown2`.
-
-
-To check code and implementation please check [github project Wiki][github-wiki]{:target="_blank"} 
-
-[github-wiki]: https://github.com/jdsuta/projects/tree/main/wiki

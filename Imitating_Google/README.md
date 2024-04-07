@@ -7,11 +7,6 @@ Discover the results for this task in this video
 [![Watch the video](https://img.youtube.com/vi/yE5DRvgfORw/maxresdefault.jpg)](https://www.youtube.com/embed/yE5DRvgfORw)
 
 
-<!-- <p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/yE5DRvgfORw" frameborder="0" allowfullscreen></iframe>
-</p> -->
-
-
 The key part of this project was to udnerstand forms and how the queries are formed. 
 
 # HTML
@@ -139,10 +134,7 @@ The order of specificity is as follows:
 4. **Element Type Selector**: Styles applied using an element type selector (e.g., `p`, `div`, `h1`) have the lowest specificity. They are the least specific and can be overridden by more specific selectors like IDs or classes.
 
 
-As a reference for this I used [CS50 Web notes][cs50x-web]{:target="_blank"}
-
-To see the complete code please visit [github reposiroty][github-imitating-google]{:target="_blank"}
-
+As a reference for this I used [CS50 Web notes][cs50x-web]
 
 <!-- Specifications accomplished in this project: 
 
