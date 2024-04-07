@@ -4,7 +4,7 @@ Wikipedia is a project built using the **Django** framework. It serves as a free
 
 Discover the capabilities of Wikipedia through this video presentation:
 
-[![Watch the video](https://img.youtube.com/vi/4muNAK4nkGQ/hqdefault.jpg)](https://www.youtube.com/embed/4muNAK4nkGQ)
+[Watch the video](https://www.youtube.com/embed/4muNAK4nkGQ)
 
 ### Personal Insights
 
