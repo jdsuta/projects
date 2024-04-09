@@ -1,0 +1,70 @@
+body {
+    padding: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3); /* Opacity adjusted to make it look inactive*/
+    pointer-events: none; /* Allow interaction with elements under the card, None apply for the overlay itself */
+    z-index: 1; /* Ensure the overlay appears above other content */
+}
+
+/* The overlay message must have a higher z-index value than the content of the card, so they appear above the content. */
+.overlay-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+/* Testing transform: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transforms */
+
+/* top: 50%; and left: 50%; position the top-left corner of the centered element at 50% of the parent container's width and height, respectively. This means the element's top-left corner is initially positioned in the middle of the parent container.
+transform: translate(-50%, -50%); moves the element horizontally and vertically by half of its own width and height, effectively centering it within the parent container. 
+The negative percentage values (-50%) shift the element up and to the left by half of its width and height, compensating for the initial placement at 50% from the top and left. */
+/* https://www.30secondsofcode.org/css/s/transform-centering/ */
+
+/* This overlay style is used when there's a winner of an auction */
+.success-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(10, 162, 243, 0.1); /* Opacity adjusted to make it look inactive*/
+    pointer-events: none; /* Allow interaction with elements under the card */
+    z-index: 1; /* Ensure the overlay appears above other content */
+}
+
+
+/* Control size of the images inside the cards */
+#imgcard {
+    max-width: 70%; 
+    height: auto;
+}
+
+
+.small-alert {
+    padding: 8px; 
+    font-size: 12px; /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-size */
+}
+
+
+
+/* z-index: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index */
+/* Position absolute vs relative https://developer.mozilla.org/en-US/docs/Web/CSS/position */
+/* absolute
+The element is removed from the normal document flow, 
+and no space is created for the element in the page layout.
+ The element is positioned relative to its closest positioned ancestor 
+ (if any) or to the initial containing block.  */
+
+ /* Cards have position: relative by default in Bootstrap. THerefore overlay will apply to the card
+https://getbootstrap.com/docs/5.0/helpers/stretched-link/#:~:text=Cards%20have%20position:%20relative%20by%20default%20in,link%20in%20the%20card%20without%20any%20other */

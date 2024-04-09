@@ -1,0 +1,13 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <h2 class="text-center">Categories</h2>
+        <br>
+        <div class="d-flex justify-content-center">
+            {% for element in categories %}
+                {% comment %} Capitalize first letter https://stackoverflow.com/questions/14268342/make-the-first-letter-uppercase-inside-a-django-template {% endcomment %}
+                <a type="button" class="btn btn-primary" href="{% url 'categories_specific' element.category %}"> {{ element.category|capfirst }} </a> &nbsp;
+            {% endfor %}
+        </div>
+{% endblock %}

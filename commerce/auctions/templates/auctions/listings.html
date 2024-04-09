@@ -1,0 +1,151 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <!-- used bootstrap to style the items -->
+    <div class="container">
+        <h2 class="text-center">Listing: {{ item.item }}</h2>
+        <!-- Structured it so it can have two rows instead of two columns -->        
+            <div class="d-flex justify-content-between px-3 mb-2">
+                <!-- watchlist -->
+                <div>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'listings' item.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="itemid" value="{{ item.id }}">
+                        <input type="hidden" name="userid" value="{{ user.id }}">
+                        <input type="hidden" name="watchlist" value="{{ isWatchlisted }}">
+                        <input type="hidden" name="form_type" value="watchlist">
+            
+                        <!-- Handles logic if it finds user has whitelisted the item it will show the button gray
+                        However, if the item is not watchlisted it will show a blue buttom -->
+                        {% if isWatchlisted %}
+                            <button type="submit" class="btn btn-secondary btn-sm active">Watchlisted</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary btn-sm">Add to Watchlist</button>
+                        {% endif %}
+                    </form>
+                    {% endif %}
+                </div>
+
+                <!-- Close Bid used to show button if logged user and owner of the auction is the same -->
+                {% if closebid == 1 %}
+                    <div> 
+                        <form action="{% url 'listings' item.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="itemid" value="{{ item.id }}">
+                            <input type="hidden" name="userid" value="{{ user.id }}">
+                            <input type="hidden" name="closebid_param" value="{{ closebid_param }}">
+                            <input type="hidden" name="form_type" value="close_bid">
+                            {% if closebid_param %}
+                                <button type="submit" class="btn btn-secondary btn-sm active">Open Bid</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-danger btn-sm">Close Bid</button>
+                            {% endif %}
+                        </form> 
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Image, Price, description, Category, etc. -->
+            <div class="card mb-3">
+                {% if user_bidwinner %}
+                    <div class="card-overlay">
+                        <div class="success-overlay"></div>
+                        <div class="overlay-message alert alert-success">You have won!</div>
+                    </div>
+                    {% else %}
+                        {% if closebid_param %}
+                            <div class="card-overlay">
+                                <div class="overlay"></div>
+                                <div class="overlay-message alert alert-warning">Bid Inactive</div>
+                            </div>
+                        {% endif %}  
+                {% endif %}                             
+                    <!-- Image -->
+                    <div class="row g-0 justify-content-center">
+                        <div class="col-md-4 text-center">
+                            <div id="imgcard">
+                                <img src="{{ item.image_url }}" alt="{{ item.item }}" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                {% if higher_priceBid == 0 %}
+                                    <h4 class="card-text"><strong>Price:</strong> ${{ item.price }}</h4>
+                                {% else %}
+                                    <h4 class="card-text"><strong>Price:</strong> ${{ higher_priceBid }} </h4>
+                                    <p class="text-info small">* Current largest bid</p>
+                                {% endif %}
+                                    <p class="card-text">{{ item.description }}</p>
+                                    <p class="card-text text-right">Category: {{ item.category }}</p>
+                                    <p class="card-text text-right">Listed by: {{ item.user }}</p>
+                                    <p class="card-text text-muted text-right">Item Created - {{ item.creation_date }}</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>        
+
+        <!-- Bidding -->
+        {% if closebid_param %}
+        {% else %}
+            <div class="text-right">
+            {% if user.is_authenticated %}
+                {% if higher_priceBid == 0 %}
+                {% else %}
+                    <p>{{ bidscount }} bid(s) so far. 
+                        {% if log_samebidder == 1 %} Your bid is the current bid 
+                        {% else %} 
+                        {% endif %} 
+                    </p>
+                {% endif %}            
+                <form action="{% url 'listings' item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="itemid" value="{{ item.id }}">
+                    <input type="hidden" name="userid" value="{{ user.id }}">
+                    <input type="hidden" name="form_type" value="bid">
+                
+                    <!-- Input field for the bid amount. Included step 0.01 to give decimal resolution-->
+                    <!-- Control on FE to the min value depending if it should be larger than original price or largest bid -->
+                    {% if higher_priceBid == 0 %}
+                        <input type="number" name="bid" min="{{ pricedb }}" step="0.01">                        
+                    {% else %} 
+                        <input type="number" name="bid" min="{{ higher_priceBid }}" step="0.01">
+                    {% endif %} 
+                    <button type="submit" class="btn btn-primary">Place Bid</button>
+                </form> 
+            {% endif %}
+            </div>
+        {% endif %}
+
+        <!-- Comment Section -->
+        {% for comment in comments %}
+            <div class="comment">
+                <strong>{{ comment.commenter }}</strong>
+                <br>
+                <span style="padding-left: 20px;">{{ comment.comment }}</span>
+            </div>
+        {% endfor %}
+        {% comment %} If the auction is closed it is not possible to submit comments {% endcomment %}
+        {% if closebid_param %}
+        {% else %}
+            {% if user.is_authenticated %}
+                <br>
+                <!-- Comment Form -->
+                <form class="comment-form" action="{% url 'listings' item.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="itemid" value="{{ item.id }}">
+                    <input type="hidden" name="userid" value="{{ user.id }}">
+                    <input type="hidden" name="form_type" value="comment">
+                    <div class="form-group">
+                        <label for="comment">Comment:</label>
+                        <textarea class="form-control" id="comment" name="comment" rows="2" placeholder="Write your comment here"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right  mb-5">Add Comment</button>
+                </form> 
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+

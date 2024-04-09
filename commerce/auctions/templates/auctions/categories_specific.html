@@ -1,0 +1,48 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<!-- used bootstrap to style the items -->
+<div class="container">
+    <h2 class="text-center">Category: {{ category|capfirst }} </h2>
+    {% for item in ItemsCAtegorized %}
+    <section class="card mb-3">
+        {% comment %} If the temporary_winner == 1 means the user logged in is the onw that won the auction {% endcomment %}
+        {% if item.temporary_winner == 1 %}
+        <div class="card-overlay">
+            <div class="success-overlay"></div>
+            <div class="overlay-message alert alert-success">You have won!</div>
+        </div>
+        {% endif %} 
+        {% comment %} If the temporary_winner == 2 means the user logged in or not authenticated has not won the auction. However some one has won {% endcomment %}
+        {% if item.temporary_winner == 2 %}
+            <div class="card-overlay">
+                <div class="overlay"></div>
+                <div class="overlay-message alert alert-warning">Bid Inactive</div>
+            </div>
+        {% endif %}
+        <!-- Bootstrap grid system: two columns col-md-3 col-md-9 and  https://getbootstrap.com/docs/4.0/components/card/ -->
+        <!-- Additionally, img-fluid to make image automatically responsive -->
+        <div class="row g-0">
+            <div class="col-md-3">
+                <!-- Use item.id to access the specific item -->
+                <a href="{% url 'listings' item.id %}">
+                    <img src="{{ item.image_url }}" alt="{{ item.item }}" class="img-fluid">
+                </a>
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <!-- Use an anchor tag for the clickable item title -->
+                    <h3 class="card-title">
+                        <a href="{% url 'listings' item.id %}">{{ item.item }}</a>
+                    </h3>
+                    <p class="card-text"><strong>Starting Price:</strong> ${{ item.price }}</p>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text">Category: {{ item.category }}</p>
+                    <p class="card-text text-muted text-right">Item Created - {{ item.creation_date }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+{% endblock %}

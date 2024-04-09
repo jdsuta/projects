@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <!-- used bootstrap to style the items -->
+    <div class="container">
+        <h2 class="text-center">Active Listings</h2>
+        {% for item in Items %}
+        {% comment %} If the temporary_winner == 2 means the user logged in or not authenticated has not won the auction. However some one has won {% endcomment %}
+        {% if item.temporary_winner == 2 %}
+        {% elif item.temporary_winner != 2 %}
+        <section class="card mb-3">
+            {% comment %} If the temporary_winner == 1 means the user logged in is the onw that won the auction {% endcomment %}
+            {% if item.temporary_winner == 1 %}
+            <div class="card-overlay">
+                <div class="success-overlay"></div>
+                <div class="overlay-message alert alert-success">You have won!</div>
+            </div>
+            {% endif %} 
+            <!-- Bootstrap grid system: two columns col-md-3 col-md-9 and  https://getbootstrap.com/docs/4.0/components/card/ -->
+            <!-- Additionally, img-fluid to make image automatically responsive -->
+            <div class="row g-0">
+                <div class="col-md-3 text-center">
+                    <!-- Use item.id to access the specific item -->
+                    <a href="{% url 'listings' item.id %}">
+                        <img src="{{ item.image_url }}" alt="{{ item.item }}" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <!-- Use an anchor tag for the clickable item title -->
+                        <h3 class="card-title">
+                            <a href="{% url 'listings' item.id %}">{{ item.item }}</a>
+                        </h3>
+                        {% if item.highest_bid %}
+                        {% comment %} |floatformat:2 used to restric to two decimal values {% endcomment %}
+                            <p><strong>Current Price:</strong> ${{ item.highest_bid|floatformat:2  }}</p>
+                        {% else %}
+                        <p class="card-text"><strong>Current Price:</strong> ${{ item.price }}</p>
+                        {% endif %}
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-text">Category: {{ item.category }}</p>
+                        <p class="card-text text-muted text-right">Item Created - {{ item.creation_date }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+{% endblock %}
