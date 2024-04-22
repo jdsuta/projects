@@ -185,8 +185,8 @@ fetch('/emails/100', {
 })
 ```
 
-To check code and implementation please check [github project Mail][github-mail]{:target="_blank"} 
-Specification and project done by:  [CS50 WEB - Mail][cs50web-mail]{:target="_blank"} 
+To check code and implementation please check [github project Mail][github-mail]
+Specification and project done by:  [CS50 WEB - Mail][cs50web-mail]
 
 ChatGPT was used to improve grammar and coherence of this article
 
