@@ -1,18 +1,10 @@
 # Mail
 
-#### Video Demo:  https://www.youtube.com/iF7C4d7ti70
+#### Video Demo:  https://www.youtube.com/Cxp1w1u0n-8
 
 Mail is an email application developed using the Django framework. The core functionality of this project, however, is driven by JavaScript (JS).
 JavaScript was employed to build most of the features of the site, integrating with an API that allows users to send, receive, and manage emails. 
 Emails can be marked as read or unread and can be archived or unarchived. This functionality was supported by HTML and CSS to create a user-friendly interface, and use JS functionality.
-
-## Mail in Action
-
-Discover the capabilities of Mail through this video presentation:
-
-<p>
-<iframe width="100%" height="315" src="https://youtu.be/Cxp1w1u0n-8" frameborder="0" allowfullscreen></iframe>
-</p>
 
 ### Personal Insights
 
