@@ -2,6 +2,8 @@
 
 {% block body %}
 
+<div class="container" id="compose-post">
+
     <h2>Register</h2>
 
     {% if message %}
@@ -27,4 +29,5 @@
 
     Already have an account? <a href="{% url 'login' %}">Log In here.</a>
 
+</div>
 {% endblock %}

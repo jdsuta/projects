@@ -1,6 +1,12 @@
-{% extends "network/layout.html" %}
+{% extends 'network/layout.html' %}
 
 {% block body %}
-    <h1>Hello Hello David Aracelly!</h1>
-    TODO
+  {% comment %}Create Post Form{% endcomment %}
+  {% if user.is_authenticated %}
+    {% comment %}the csrfToken was put in the heads tags in the layout.html{% endcomment %}
+    <div id="form" data-userid="{{ request.user.id }}"></div> <!-- Only used is to recover the userid -->
+    <br />
+  {% endif %}
+  <div id="root"></div> <!-- Renders the parent that renders the form and the Posts -->
+  
 {% endblock %}
