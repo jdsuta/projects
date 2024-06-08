@@ -1,6 +1,6 @@
 # Network
 
-#### Video Demo:  https://www.youtube.com/Cxp1w1u0n-8
+#### Video Demo:  https://youtu.be/tg9DLzLe7PY
 
 Network is a Twitter-like social network website for making posts and following users. Developed using the Django framework and React, it allows users to create posts, follow/unfollow users, like/unlike posts, edit their own posts, and view profiles.
 
