@@ -120,10 +120,8 @@ Using Python, JavaScript, HTML, and CSS, complete the implementation of a social
 **“Like” and “Unlike”:** Users should be able to click a button or link on any post to toggle whether or not they “like” that post.
 Using JavaScript, you should asynchronously let the server know to update the like count (as via a call to fetch) and then update the post’s like count displayed on the page, without requiring a reload of the entire page.
 
-To check code and implementation please check [github project Network][github-network]{:target="_blank"} 
-Specification and project done by:  [CS50 WEB - Network][cs50web-network]{:target="_blank"} 
+Specification and project suggested by:  [CS50 WEB - Network][cs50web-network]{:target="_blank"} 
 
 ChatGPT was used to improve grammar and coherence of this article
 
-[github-network]: https://github.com/jdsuta/projects/tree/main/network
 [cs50web-network]: https://cs50.harvard.edu/web/2020/projects/4/network/
