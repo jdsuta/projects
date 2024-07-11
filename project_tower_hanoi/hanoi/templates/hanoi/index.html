@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <style>
+        .rod {
+            display: inline-block;
+            vertical-align: top;
+            width: 200px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .disk {
+            text-align: center;
+            background-color: lightblue;
+            margin: 1px 0;
+        }
+    </style>
+    {% load static %}
+</head>
+<body>
+    <h1>Tower of Hanoi</h1>
+    <input type="number" id="num_disks" placeholder="Number of disks" min="1">
+    <button onclick="setupAndSolve('manual')"> Manual Play</button>
+    <button onclick="setupAndSolve('auto')">Auto-Solve</button>
+    <button onclick="reset()">Reset</button>
+    <div id="puzzle">
+        <div id="rodA" class="rod"></div>
+        <div id="rodB" class="rod"></div>
+        <div id="rodC" class="rod"></div>
+    </div>
+    <div id="solution"></div>
+    <script src="{% static 'hanoi/hanoi.js' %}"></script>
+</body>
+</html>
